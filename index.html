@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Digital Portfolio</title>
+    <style>
+        /* إعدادات وتنسيقات الموقع العامة (الثيم المظلم الافتراضي) */
+        body {
+            background-color: #232f3e; /* لون AWS الداكن الشهير */
+            color: #ffffff; /* نصوص بيضاء */
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            transition: background-color 0.3s, color 0.3s; /* انتقال ناعم للألوان */
+        }
+
+        /* الحاوية الرئيسية للموقع */
+        .container {
+            width: 100%;
+            max-width: 900px;
+        }
+
+        /* رأس الصفحة (الاسم والترحيب والزر) */
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        header h1 {
+            color: #ff9900; /* برتقالي AWS لاسمكِ */
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            color: #aab7c4;
+            font-size: 18px;
+            transition: color 0.3s;
+        }
+
+        /* 🌙 تنسيق زر الجافا سكريبت التفاعلي */
+        #theme-btn {
+            background-color: #ff9900; /* برتقالي */
+            color: #232f3e; /* نص داكن */
+            border: none;
+            padding: 12px 24px;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 25px;
+            cursor: pointer;
+            margin-top: 15px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+            transition: transform 0.2s, background-color 0.3s;
+        }
+
+        #theme-btn:hover {
+            transform: scale(1.05); /* تكبير بسيط عند تمرير الماوس */
+        }
+
+        /* شبكة عرض المربعات (Grid) للكمبيوتر */
+        .main-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr; /* مربعين بجانب بعضهما */
+            gap: 20px; /* مسافة بين المربعات */
+        }
+
+        /* تنسيق المربعات (الكورسات والمهارات) */
+        .card {
+            background-color: #1c2631; /* خلفية داكنة متباينة */
+            border-left: 5px solid #ff9900; /* الخط الجانبي البرتقالي المميز */
+            border-radius: 8px;
+            padding: 25px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+            transition: background-color 0.3s, box-shadow 0.3s;
+        }
+
+        /* مربع الأهداف جعلناه يأخذ العرض الكامل أسفل الشاشة */
+        .full-width {
+            grid-column: span 2;
+        }
+
+        .card h2 {
+            color: #ff9900;
+            font-size: 22px;
+            margin-top: 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .card ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .card li {
+            color: #e6e6e6;
+            margin-bottom: 15px;
+            font-size: 16px;
+            line-height: 1.6;
+            display: flex;
+            align-items: center;
+            gap: 10px; /* مسافة بين الأيقونة والكلام */
+            transition: color 0.3s;
+        }
+
+        /* تنسيق الأيقونات الصغيرة */
+        .icon {
+            width: 22px;
+            height: 22px;
+        }
+
+        /* الروابط واختصارات الـ Bitly */
+        a {
+            color: #00a1c9;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        a:hover {
+            color: #ff9900;
+        }
+
+        /* 📱 ميزة المستعلم عن الوسائط (Media Queries) للهواتف */
+        @media (max-width: 768px) {
+            body {
+                padding: 15px;
+            }
+
+            .main-grid {
+                grid-template-columns: 1fr; /* تحويل المربعات لتصبح تحت بعضها عمودياً */
+            }
+
+            .full-width {
+                grid-column: span 1; /* إلغاء تمدد المربع الأخير ليناسب الهاتف */
+            }
+
+            header h1 {
+                font-size: 26px;
+            }
+        }
+
+        /* =================================================== */
+        /* ✨ الألوان الجديدة التي ستعمل عند تفعيل الثيم الفاتح بواسطة JavaScript */
+        /* =================================================== */
+        body.light-theme {
+            background-color: #f4f6f9; /* خلفية رمادية فاتحة جداً مريحة */
+            color: #232f3e; /* تحويل النصوص للون الداكن لقراءتها */
+        }
+
+        body.light-theme header p {
+            color: #556677;
+        }
+
+        body.light-theme .card {
+            background-color: #ffffff; /* المربعات تصبح بيضاء ناصعة */
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08); /* ظل ناعم خفيف */
+        }
+
+        body.light-theme .card li {
+            color: #334455; /* نصوص القوائم تصبح داكنة */
+        }
+
+        body.light-theme #theme-btn {
+            background-color: #232f3e; /* الزر يصبح داكناً في الوضع الفاتح */
+            color: #ffffff;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- رأس الصفحة وفيه زر التفاعل الجافا سكريبت -->
+        <header>
+            <h1>Hello, I am Kawtar</h1>
+            <p>Welcome to my journey of learning and developing my cloud skills.</p>
+            <!-- الزر التفاعلي -->
+            <button id="theme-btn">🌙 المظهر الداكن</button>
+        </header>
+
+        <!-- الشبكة الرئيسية للمربعات -->
+        <div class="main-grid">
+
+            <!-- مربع الكورسات الحالية -->
+            <div class="card">
+                <h2>📚 Current Courses</h2>
+                <ul>
+                    <li>Cloud Computing: Learning cloud basics and how to manage global services.</li>
+                    <li>Web Design Basics: Understanding how to build and style web pages.</li>
+                    <li>Next Course: Learning new and exciting skills here.</li>
+                </ul>
+            </div>
+
+            <!-- مربع المهارات مع الأيقونات التقنية -->
+    <!-- 🧠 كود الـ JavaScript الذي يتحكم في ضغطة الزر ويغير الألوان سحرياً -->
+    <script>
+        // 1. ربط كود الجافا سكريبت بالزر وبالصفحة (Body)
+        const themeBtn = document.getElementById('theme-btn');
+        const body = document.body;
+
+        // 2. الاستماع لضغطة المستخدم على الزر
+        themeBtn.addEventListener('click', () => {
+            
+            // 3. أمر سحري يقوم بتشغيل أو إطفاء الألوان الفاتحة (light-theme)
+            body.classList.toggle('light-theme');
+            
+            // 4. كود ذكي لتغيير الكلمة والأيقونة المكتوبة داخل الزر حسب الوضع الحالي
+            if (body.classList.contains('light-theme')) {
+                themeBtn.innerText = "☀️ المظهر المضيء";
+            } else {
+                themeBtn.innerText = "🌙 المظهر الداكن";
+            }
+        });
+    </script>
+
+</body>
+</html>
+
+
+2 Tem 2026 Per 01:06 tarihinde Kawtar Karroum <kawtarkarroum8@gmail.com> şunu yazdı:
