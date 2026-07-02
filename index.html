@@ -1,68 +1,267 @@
-            <h1>Hello, I am Kawtar | Cloud Developer</h1>
-            <p>Welcome to my journey of learning and developing my cloud skills.</p>
-            <button id="theme-btn">🌙 المظهر الداكن</button>
-        </header> 
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>كوثر | مطورة سحابية واعدة</title>
+    <style>
+        body {
+            background-color: #232f3e; /* لون كحلي مستوحى من AWS */
+            color: #ffffff;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .container {
+            max-width: 800px;
+            width: 100%;
+        }
+        .card {
+            background-color: #1a2530;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+            border-right: 5px solid #ff9900; /* خط برتقالي مستوحى من AWS */
+        }
+        h1 {
+            color: #ff9900;
+            text-align: center;
+            margin-bottom: 5px;
+        }
+        h2 {
+            color: #ff9900;
+            border-bottom: 1px solid #3a485a;
+            padding-bottom: 5px;
+        }
+        ul {
+            padding-right: 20px;
+        }
+        li {
+            margin-bottom: 10px;
+        }
+        /* تصميم الميزات التفاعلية */
+        .btn-theme {
+            background-color: #ff9900;
+            color: #232f3e;
+            border: none;
+            padding: 10px 20px;
+            font-weight: bold;
+            border-radius: 5px;
+            cursor: pointer;
+            display: block;
+            margin: 20px auto;
+            transition: 0.3s;
+        }
+        .btn-theme:hover {
+            background-color: #e08800;
+        }
+        .light-theme {
+            background-color: #f3f3f3;
+            color: #232f3e;
+        }
+        .light-theme .card {
+            background-color: #ffffff;
+            color: #232f3e;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        /* تصميم نموذج الاتصال */
+        .contact-form input, .contact-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: 1px solid #3a485a;
+            background-color: #232f3e;
+            color: white;
+            box-sizing: border-box;
+        }
+        .light-theme .contact-form input, .light-theme .contact-form textarea {
+            background-color: #f3f3f3;
+            color: #232f3e;
+        }
+        .btn-submit {
+            background-color: #ff9900;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            font-weight: bold;
+        }
+        /* ميزة عدّاد الزيارات الرمزي */
+        .counter-text {
+            text-align: center;
+            font-size: 0.9rem;
+            color: #a0aec0;
+            margin-top: -10px;
+            margin-bottom: 20px;
+        }
+        /* ميزة أزرار التواصل الاجتماعي المضافة */
+        .social-links {
+            text-align: center;
+            margin-top: 30px;
+            padding-top: 15px;
+            border-top: 1px solid #3a485a;
+        }
+        .light-theme .social-links {
+            border-top: 1px solid #cbd5e0;
+        }
+        .social-btn {
+            background-color: #ff9900;
+            color: #232f3e;
+            padding: 8px 15px;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 5px;
+            margin: 0 5px;
+            display: inline-block;
+            transition: 0.3s;
+        }
+        .social-btn:hover {
+            background-color: #e08800;
+            color: white;
+        }
+        /* ميزة زر العودة للأعلى المضافة */
+        #scrollTopBtn {
+            display: none;
+            position: fixed;
+            bottom: 20px;
+            left: 20px; /* ليتناسب مع القراءة من اليمين لليسار */
+            z-index: 99;
+            border: none;
+            outline: none;
+            background-color: #ff9900;
+            color: white;
+            cursor: pointer;
+            padding: 12px;
+            border-radius: 50%;
+            font-size: 18px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+        }
+    </style>
+</head>
+<body>
 
-        <div class="main-grid">
+    <button id="scrollTopBtn" title="العودة للأعلى">⬆️</button>
 
-            <!-- 1. مربع الكورسات الحالية -->
-            <div class="card">
-                <h2>📚 الكورسات الحالية | Current Courses</h2>
-                <ul>
-                    <li><strong>الحوسبة السحابية (Cloud Computing):</strong> دراسة هندسة السحاب وإدارة الخدمات العالمية.</li>
-                    <li><strong>تطوير واجهات الويب (Frontend Development):</strong> تعلم لغات HTML5, CSS3 وأساسيات JavaScript التفاعلية.</li>
-                </ul>
-            </div>
+    <div class="container">
+        
+        <header>
+            <h1>مرحباً، أنا كوثر | مطورة سحابية (Cloud Developer)</h1>
+            <p style="text-align: center;">مرحباً بكم في رحلتي لتعلم وتطوير مهاراتي في الحوسبة السحابية وبرمجة الويب.</p>
+            
+            <!-- ميزة: عدّاد الزيارات -->
+            <p class="counter-text" id="visitor-counter">🔢 عدد زياراتك لهذه الصفحة: 1</p>
+            
+            <!-- ميزة: زر تغيير المظهر -->
+            <button id="theme-btn" class="btn-theme">💡 تغيير المظهر (فاتح / داكن)</button>
+        </header>
 
-            <!-- 2. مربع المهارات التي أتقنتها بالفعل -->
-            <div class="card">
-                <h2>⚡ مهاراتي التقنية | My Cloud Skills</h2>
-                <ul>
-                    <li>
-                        <img class="icon" src="https://icons8.com" alt="AWS">
-                        <strong>Amazon S3:</strong> رفع المواقع وإدارة الاستضافة السحابية الآمنة.
-                    </li>
-                    <li>
-                        <img class="icon" src="https://icons8.com" alt="HTML5">
-                        <strong>Web Design:</strong> بناء وتصميم صفحات ويب مرنة وتعمل على الهواتف الذكية.
-                    </li>
-                    <li>
-                        <img class="icon" src="https://icons8.com" alt="GitHub">
-                        <strong>GitHub & DevOps:</strong> حفظ الأكواد وبناء نظام الأتمتة والتحديث التلقائي للمواقع (CI/CD).
-                    </li>
-                    <li>
-                        <img class="icon" src="https://icons8.com" alt="Link">
-                        <strong>Link Management:</strong> احتراف اختصار وإدارة الروابط الرقمية عبر Bitly.
-                    </li>
-                </ul>
-            </div>
-
-            <!-- 3. مربع الأهداف المستقبلية -->
-            <div class="card full-width">
-                <h2>🚀 الأهداف المستقبلية | Future Goals</h2>
-                <ul>
-                    <li>أسعى لإتقان بناء التطبيقات الديناميكية الكاملة، والتعمق أكثر في خدمات AWS المتقدمة، وبناء مشاريع سحابية ضخمة تخدم المجتمع الرقمي.</li>
-                </ul>
-            </div>
-
+        <!-- قسم الكورسات الحالية -->
+        <div class="card">
+            <h2>📚 الكورسات الحالية | Current Courses</h2>
+            <ul>
+                <li><strong>AWS Amazon S3:</strong> بناء واستضافة المواقع الثابتة وإدارتها عبر السحابة.</li>
+                <li><strong>HTML5 Web Design:</strong> تصميم وهيكلة صفحات الويب وتنسيقها بشكل احترافي.</li>
+                <li><strong>GitHub & DevOps:</strong> أتمتة رفع وتحديث المواقع تلقائياً (CI/CD).</li>
+            </ul>
         </div>
+
+        <!-- قسم المهارات -->
+        <div class="card">
+            <h2>⚡ مهاراتي السحابية | My Cloud Skills</h2>
+            <ul>
+                <li>إدارة وتخزين الملفات سحابياً عبر خدمات أمازون.</li>
+                <li>تطوير واجهات المستخدم الثابتة (Frontend Development).</li>
+                <li>إدارة المستودعات البرمجية عبر Git & GitHub.</li>
+            </ul>
+        </div>
+
+        <!-- قسم الأهداف المستقبلية -->
+        <div class="card">
+            <h2>🎯 الأهداف المستقبلية | Future Goals</h2>
+            <ul>
+                <li>تتطوير تطبيقات سحابية كاملة وديناميكية (Full-Stack Cloud Applications).</li>
+                <li>الحصول على شهادات AWS المعتمدة عالمياً.</li>
+                <li>المساهمة في بناء مشاريع رقمية تخدم المجتمع التقني العربي.</li>
+            </ul>
+        </div>
+
+        <!-- ميزة: نموذج اتصال تفاعلي احترافي -->
+        <div class="card contact-form">
+            <h2>📧 تواصل معي | Contact Me</h2>
+            <form id="contactForm">
+                <input type="text" placeholder="الاسم الكريم" required>
+                <input type="email" placeholder="البريد الإلكتروني" required>
+                <textarea rows="4" placeholder="اكتب رسالتك هنا..." required></textarea>
+                <button type="submit" class="btn-submit">إرسال الرسالة</button>
+            </form>
+        </div>
+
+        <!-- ميزة: روابط التواصل الاجتماعي المهنية -->
+        <footer class="social-links">
+            <p>تابع رحلتي البرمجية على المنصات التالية:</p>
+            <!-- قومي باستبدال علامة # برابط حسابك الحقيقي مستقبلاً -->
+            <a href="#" target="_blank" class="social-btn">🌐 حسابي على GitHub</a>
+            <a href="#" target="_blank" class="social-btn">💼 حسابي على LinkedIn</a>
+        </footer>
+
     </div>
 
     <script>
+        // 1. كود تغيير المظهر (فاتح / داكن)
         const themeBtn = document.getElementById('theme-btn');
         const body = document.body;
 
         themeBtn.addEventListener('click', () => {
             body.classList.toggle('light-theme');
             if (body.classList.contains('light-theme')) {
-                themeBtn.innerText = "☀️ المظهر المضيء";
-            } else {
                 themeBtn.innerText = "🌙 المظهر الداكن";
+            } else {
+                themeBtn.innerText = "💡 المظهر الفاتح";
             }
+        });
+
+        // 2. كود نموذج الاتصال وإظهار رسالة النجاح
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('شكراً لك! تم استلام رسالتك بنجاح، وسأقوم بالرد عليك قريباً.');
+            this.reset();
+        });
+
+        // 3. كود عدّاد الزيارات الرمزي (باستخدام ذاكرة المتصفح المحلية)
+        let visits = localStorage.getItem('page_view');
+        if (visits) {
+            visits = parseInt(visits) + 1;
+            localStorage.setItem('page_view', visits);
+        } else {
+            visits = 1;
+            localStorage.setItem('page_view', visits);
+        }
+        document.getElementById('visitor-counter').innerText = `🔢 عدد زياراتك لهذه الصفحة: ${visits}`;
+
+        // 4. كود زر العودة إلى الأعلى السلس
+        const mybutton = document.getElementById("scrollTopBtn");
+        window.onscroll = function() { scrollFunction() };
+
+        function scrollFunction() {
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                mybutton.style.display = "block";
+            } else {
+                mybutton.style.display = "none";
+            }
+        }
+
+        mybutton.addEventListener("click", function(){
+            window.scrollTo({top: 0, behavior: 'smooth'});
         });
     </script>
 
 </body>
 </html>
-
 
