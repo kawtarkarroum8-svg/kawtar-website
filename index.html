@@ -209,17 +209,7 @@
 
     </div>
 
-    <script>
-        // 1. تشغيل زر تغيير المظهر (فاتح / داكن)
-        const themeBtn = document.getElementById('theme-btn');
-        themeBtn.addEventListener('click', () => {
-            document.body.classList.toggle('light-theme');
-            if (document.body.classList.contains('light-theme')) {
-                themeBtn.innerText = "🌙 المظهر الداكن";
-            } else {
-                themeBtn.innerText = "💡 المظهر الفاتح";
-            }
-        });
+    <script> document.addEventListener("DOMContentLoaded", function() { // 1. تفعيل زر المظهر (الفاتح / الداكن) const themeBtn = document.getElementById("theme-btn"); if (themeBtn) { themeBtn.addEventListener("click", function() { document.body.classList.toggle("dark-theme"); // تغيير النص داخل الزر عند الضغط if (document.body.classList.contains("dark-theme")) { themeBtn.textContent = "المظهر الداكن"; } else { themeBtn.textContent = "المظهر الفاتح"; } }); } // 2. تفعيل زر تغيير اللغة (English) const langBtn = document.getElementById("lang-btn"); if (langBtn) { langBtn.addEventListener("click", function() { alert("تم الضغط على زر تغيير اللغة بنجاح!"); }); } }); </script> 
 
         // 2. تشغيل زر تغيير اللغة (عربي / إنجليزي)
         const langBtn = document.getElementById('lang-btn');
