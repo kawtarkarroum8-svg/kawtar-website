@@ -1,4 +1,4 @@
-!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
@@ -14,6 +14,7 @@
             display: flex;
             flex-direction: column;
             align-items: center;
+            transition: background-color 0.3s, color 0.3s;
         }
         .container {
             max-width: 800px;
@@ -39,15 +40,15 @@
         }
         ul {
             padding-right: 20px;
+            padding-left: 20px;
         }
         li {
             margin-bottom: 10px;
         }
-        /* تصميم الأزرار */
-        .btn-container {
+        .controls {
             display: flex;
             justify-content: center;
-            gap: 15px;
+            gap: 10px;
             margin: 20px auto;
         }
         .btn-theme, .btn-lang {
@@ -72,88 +73,91 @@
             color: #232f3e;
             box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
-        /* تصميم نموذج الاتصال */
-        .contact-form input, .contact-form textarea {
-            width: 100%;
-            padding: 10px;
-            margin: 10px 0;
-            border-radius: 5px;
-            border: 1px solid #3a485a;
-            background-color: #232f3e;
-            color: white;
-            box-sizing: border-box;
-        }
-        .light-theme .contact-form input, .light-theme .contact-form textarea {
-            background-color: #f3f3f3;
-            color: #232f3e;
-            border: 1px solid #cbd5e0;
-        }
-        .btn-submit {
+        #scrollTopBtn {
+            display: none;
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            z-index: 99;
+            border: none;
             background-color: #ff9900;
             color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
             cursor: pointer;
-            width: 100%;
-            font-weight: bold;
+            padding: 12px;
+            border-radius: 50%;
+            font-size: 18px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
         }
-        .counter-text {
-            text-align: center;
-            font-size: 0.9rem;
-            color: #a0aec0;
-            margin-top: -10px;
-            margin-bottom: 20px;
+        /* لتغيير الاتجاه عند قلب اللغة */
+        html[dir="ltr"] body {
+            direction: ltr;
         }
+        html[dir="ltr"] .card {
+            border-right: none;
+            border-left: 5px solid #ff9900;
+        }
+        html[dir="ltr"] ul {
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <button id="scrollTopBtn" title="العودة للأعلى">⬆️</button>
+
+    <div class="container">
+        
+        <header>
             <h1 id="main-title">مرحباً، أنا كوثر | مطورة سحابية (Cloud Developer)</h1>
-            <p id="main-sub" style="text-align: center;">مرحباً بكم في رحلتي لتعلم وتطوير مهاراتي في الحوسبة السحابية وبرمجة الويب.</p>
+            <p id="sub-title" style="text-align: center;">مرحباً بكم في رحلتي لتعلم وتطوير مهاراتي في الحوسبة السباحية وبرمجة الويب.</p>
             
             <p class="counter-text" id="visitor-counter">🔢 عدد زياراتك لهذه الصفحة: 1</p>
             
-            <div class="btn-container">
-                <button id="lang-btn" class="btn-lang">English</button>
+            <div class="controls">
                 <button id="theme-btn" class="btn-theme">💡 المظهر الفاتح</button>
+                <button id="lang-btn" class="btn-lang">English</button>
             </div>
         </header>
 
         <!-- كرت الكورسات -->
-        <div class="card">
+        <div class="card" id="card-courses">
             <h2 id="title-courses">📚 الكورسات الحالية</h2>
-            <ul id="list-courses">
-                <li><strong>AWS Amazon S3:</strong> بناء واستضافة المواقع الثابتة وإدارتها عبر السحابة.</li>
-                <li><strong>HTML5 Web Design:</strong> تصميم وهيكلة صفحات الويب وتنسيقها بشكل احترافي.</li>
-                <li><strong>GitHub & DevOps:</strong> أتمتة رفع وتحديث المواقع تلقائياً (CI/CD).</li>
+            <ul>
+                <li id="c1"><strong>AWS Amazon S3:</strong> بناء واستضافة المواقع الثابتة وإدارتها عبر السحابة.</li>
+                <li id="c2"><strong>HTML5 Web Design:</strong> تصميم وهيكلة صفحات الويب وتنسيقها بشكل احترافي.</li>
+                <li id="c3"><strong>GitHub & DevOps:</strong> أتمتة رفع وتحديث المواقع تلقائياً (CI/CD).</li>
             </ul>
         </div>
 
         <!-- كرت المهارات -->
-        <div class="card">
+        <div class="card" id="card-skills">
             <h2 id="title-skills">⚡ مهاراتي السحابية</h2>
-            <ul id="list-skills">
-                <li>إدارة وتخزين الملفات سحابياً عبر خدمات أمازون.</li>
-                <li>تطوير واجهات المستخدم الثابتة (Frontend Development).</li>
-                <li>إدارة المستودعات البرمجية عبر Git & GitHub.</li>
+            <ul>
+                <li id="s1">إدارة وتخزين الملفات سحابياً عبر خدمات أمازون.</li>
+                <li id="s2">تطوير واجهات المستخدم الثابتة (Frontend Development).</li>
+                <li id="s3">إدارة المستودعات البرمجية عبر Git & GitHub.</li>
             </ul>
         </div>
 
         <!-- كرت الأهداف -->
-        <div class="card">
+        <div class="card" id="card-goals">
             <h2 id="title-goals">🎯 الأهداف المستقبلية</h2>
-            <ul id="list-goals">
-                <li>تطوير تطبيقات سحابية كاملة وديناميكية (Full-Stack Cloud Applications).</li>
-                <li>الحصول على شهادات AWS المعتمدة عالمياً.</li>
-                <li>المساهمة في بناء مشاريع رقمية تخدم المجتمع التقني العربي.</li>
+            <ul>
+                <li id="g1">تطوير تطبيقات سحابية كاملة وديناميكية (Full-Stack Cloud Applications).</li>
+                <li id="g2">الحصول على شهادات AWS المعتمدة عالمياً.</li>
+                <li id="g3">المساهمة في بناء مشاريع رقمية تخدم المجتمع التقني العربي.</li>
             </ul>
         </div>
 
         <!-- كرت الاتصال -->
-        <div class="card contact-form">
+        <div class="card contact-form" id="card-contact">
             <h2 id="title-contact">📧 تواصل معي | Contact Me</h2>
             <form id="contactForm">
-                <input type="text" id="inp-name" placeholder="الاسم الكريم" required>
-                <input type="email" id="inp-email" placeholder="البريد الإلكتروني" required>
-                <textarea id="txt-msg" rows="4" placeholder="اكتب رسالتك هنا..." required></textarea>
-                <button type="submit" id="btn-submit" class="btn-submit">إرسال الرسالة</button>
+                <input type="text" id="form-name" placeholder="الاسم الكريم" required>
+                <input type="email" id="form-email" placeholder="البريد الإلكتروني" required>
+                <textarea id="form-msg" rows="4" placeholder="اكتب رسالتك هنا..." required></textarea>
+                <button type="submit" id="form-submit" class="btn-submit">إرسال الرسالة</button>
             </form>
         </div>
 
@@ -166,44 +170,13 @@
     </div>
 
     <script>
-        const translations = {
-            ar: {
-                title: "كوثر | مطورة سحابية واعدة",
-                headerTitle: "مرحباً، أنا كوثر | مطورة سحابية (Cloud Developer)",
-                headerSub: "مرحباً بكم في رحلتي لتعلم وتطوير مهاراتي في الحوسبة السحابية وبرمجة الويب.",
-                coursesTitle: "📚 الكورسات الحالية",
-                course1: "<strong>AWS Amazon S3:</strong> بناء واستضافة المواقع الثابتة وإدارتها عبر السحابة.",
-                course2: "<strong>HTML5 Web Design:</strong> تصميم وهيكلة صفحات الويب وتنسيقها بشكل احترافي.",
-                course3: "<strong>GitHub & DevOps:</strong> أتمتة رفع وتحديث المواقع تلقائياً (CI/CD).",
-                skillsTitle: "⚡ مهاراتي السحابية",
-                skill1: "إدارة وتخزين الملفات سحابياً عبر خدمات أمازون.",
-                skill2: "تطوير واجهات المستخدم الثابتة (Frontend Development).",
-                skill3: "إدارة المستودعات البرمجية عبر Git & GitHub.",
-                goalsTitle: "🎯 الأهداف المستقبلية",
-                goal1: "تطوير تطبيقات سحابية كاملة وديناميكية (Full-Stack Cloud Applications).",
-                goal2: "الحصول على شهادات AWS المعتمدة عالمياً.",
-                goal3: "المساهمة في بناء مشاريع رقمية تخدم المجتمع التقني العربي.",
-                contactTitle: "📧 تواصل معي | Contact Me",
-                namePh: "الاسم الكريم",
-                emailPh: "البريد الإلكتروني",
-                msgPh: "اكتب رسالتك هنا...",
-                submitBtn: "إرسال الرسالة",
-                footerText: "تابع رحلتي البرمجية على المنصات التالية:",
-                alertMsg: "شكراً لك! تم استلام رسالتك بنجاح، وسأقوم بالرد عليك قريباً."
-            },
-            en: {
-                title: "Kawtar | Aspiring Cloud Developer",
+        // قاموس الترجمة الكامل والثابت
+                title: "Kawtar | Promising Cloud Developer",
                 headerTitle: "Hello, I am Kawtar | Cloud Developer",
                 headerSub: "Welcome to my journey of learning and developing my skills in Cloud Computing and Web Development.",
                 coursesTitle: "📚 Current Courses",
-                course1: "<strong>AWS Amazon S3:</strong> Building, hosting static websites and managing them via Cloud.",
-                course2: "<strong>HTML5 Web Design:</strong> Designing, structuring web pages and styling them professionally.",
-                course3: "<strong>GitHub & DevOps:</strong> Automating website uploading and updating (CI/CD).",
+                course1: "<strong>AWS Amazon S3:</strong> Building, hosting, and managing static websites on the cloud.",
+                course2: "<strong>HTML5 Web Design:</strong> Designing, structuring, and styling web pages professionally.",
+                course3: "<strong>GitHub & DevOps:</strong> Automating website deployment and updates (CI/CD).",
                 skillsTitle: "⚡ My Cloud Skills",
-                skill1: "Cloud file management and storage via AWS services.",
-                skill2: "Frontend UI Web Development.",
-                skill3: "Code repository management via Git and GitHub.",
-                goalsTitle: "🎯 Future Goals",
-                goal1: "Developing full-stack cloud-native web applications.",
-
 
