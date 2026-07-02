@@ -143,8 +143,8 @@
 
         <!-- كرت الكورسات -->
         <div class="card">
-            <h2 class="ar-text">📚 الكورسات الحالية</h2>
-            <h2 class="en-text">📚 Current Courses</h2>
+            <h2 id="courses-title-ar"class="ar-text">📚 الكورسات الحالية</h2>
+            <h2 id="couses-title-en"class="en-text"style="display: none;">📚 Current Courses</h2>
             
             <ul class="ar-text">
                 <li><strong>AWS Amazon S3:</strong> بناء واستضافة المواقع الثابتة وإدارتها عبر السحابة.</li>
@@ -247,9 +247,10 @@
             visits = 1;
         }
         localStorage.setItem('page_view_count', visits);
-
 <script>
 document.addEventListener("DOMContentLoaded", function() {
+    
+    // 1. كود تفعيل زر المظهر (الفاتح / الداكن)
     const themeBtn = document.getElementById("theme-btn");
     if (themeBtn) {
         themeBtn.addEventListener("click", function() {
@@ -261,22 +262,41 @@ document.addEventListener("DOMContentLoaded", function() {
             }
         });
     }
+
+    // 2. كود تبديل اللغة الفعلي (عربي / English)
     const langBtn = document.getElementById("lang-btn");
+    let currentLang = "ar"; // اللغة الافتراضية حالياً هي العربية
+
     if (langBtn) {
         langBtn.addEventListener("click", function() {
-            alert("تم الضغط على زر تغيير اللغة بنجاح!");
+            
+            // تحديد العناصر والنصوص من واقع موقعكِ
+            const welcomeText = document.getElementById("welcome-text"); // نص: مرحباً، أنا
+            const coursesTitle = document.getElementById("courses-title"); // نص: الكورسات الحالية
+            const skillsTitle = document.getElementById("skills-title"); // نص: مهاراتي السحابية
+
+            if (currentLang === "ar") {
+                // تحويل الموقع إلى الإنجليزية
+                currentLang = "en";
+                langBtn.textContent = "العربية"; // يتبدل نص الزر ليعيدك للعربية
+                document.documentElement.dir = "ltr"; // تحويل اتجاه الموقع من اليسار لليمين
+
+                if (welcomeText) welcomeText.textContent = "Hello, I am";
+                if (coursesTitle) coursesTitle.textContent = "Current Courses";
+                if (skillsTitle) skillsTitle.textContent = "My Cloud Skills";
+
+            } else {
+                // العودة إلى اللغة العربية
+                currentLang = "ar";
+                langBtn.textContent = "English";
+                document.documentElement.dir = "rtl"; // إعادة اتجاه الموقع من اليمين لليسار
+
+                if (welcomeText) welcomeText.textContent = "مرحباً، أنا";
+                if (coursesTitle) coursesTitle.textContent = "الكورسات الحالية";
+                if (skillsTitle) skillsTitle.textContent = "مهاراتي السحابية";
+            }
         });
     }
 });
 </script>
-
-<style>
-body.dark-theme {
-    background-color: #1a1a1a !important;
-    color: #ffffff !important;
-}
-body.dark-theme h1, body.dark-theme p, body.dark-theme div, body.dark-theme span {
-    color: #ffffff !important;
-}
-</style>
 
