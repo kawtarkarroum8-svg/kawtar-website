@@ -1,12 +1,12 @@
-<!DOCTYPE html>
+!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title id="site-title">كوثر | مطورة سحابية واعدة</title>
+    <title>كوثر | مطورة سحابية واعدة</title>
     <style>
         body {
-            background-color: #232f3e;
+            background-color: #232f3e; /* لون كحلي مستوحى من AWS */
             color: #ffffff;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
@@ -25,7 +25,7 @@
             padding: 20px;
             margin-bottom: 20px;
             box-shadow: 0 4px 6px rgba(0,0,0,0.3);
-            border-right: 5px solid #ff9900;
+            border-right: 5px solid #ff9900; /* خط برتقالي مستوحى من AWS */
         }
         h1 {
             color: #ff9900;
@@ -43,6 +43,13 @@
         li {
             margin-bottom: 10px;
         }
+        /* تصميم الأزرار */
+        .btn-container {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 20px auto;
+        }
         .btn-theme, .btn-lang {
             background-color: #ff9900;
             color: #232f3e;
@@ -51,79 +58,102 @@
             font-weight: bold;
             border-radius: 5px;
             cursor: pointer;
-            margin: 10px;
             transition: 0.3s;
         }
         .btn-theme:hover, .btn-lang:hover {
             background-color: #e08800;
         }
-        .header-buttons {
-            display: flex;
-            justify-content: center;
-            margin-top: 15px;
-            outline: none;
+        .light-theme {
+            background-color: #f3f3f3;
+            color: #232f3e;
+        }
+        .light-theme .card {
+            background-color: #ffffff;
+            color: #232f3e;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        /* تصميم نموذج الاتصال */
+        .contact-form input, .contact-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: 1px solid #3a485a;
+            background-color: #232f3e;
+            color: white;
+            box-sizing: border-box;
+        }
+        .light-theme .contact-form input, .light-theme .contact-form textarea {
+            background-color: #f3f3f3;
+            color: #232f3e;
+            border: 1px solid #cbd5e0;
+        }
+        .btn-submit {
             background-color: #ff9900;
             color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
             cursor: pointer;
-            padding: 12px;
-            border-radius: 50%;
-            font-size: 18px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+            width: 100%;
+            font-weight: bold;
         }
-    </style>
-</head>
-<body>
-
-    <button id="scrollTopBtn" title="العودة للأعلى">⬆️</button>
-
-    <div class="container">
-        
-        <header>
+        .counter-text {
+            text-align: center;
+            font-size: 0.9rem;
+            color: #a0aec0;
+            margin-top: -10px;
+            margin-bottom: 20px;
+        }
             <h1 id="main-title">مرحباً، أنا كوثر | مطورة سحابية (Cloud Developer)</h1>
-            <p id="sub-title" style="text-align: center;">مرحباً بكم في رحلتي لتعلم وتطوير مهاراتي في الحوسبة السحابية وبرمجة الويب.</p>
+            <p id="main-sub" style="text-align: center;">مرحباً بكم في رحلتي لتعلم وتطوير مهاراتي في الحوسبة السحابية وبرمجة الويب.</p>
             
             <p class="counter-text" id="visitor-counter">🔢 عدد زياراتك لهذه الصفحة: 1</p>
             
-            <div class="header-buttons">
-                <button id="theme-btn" class="btn-theme">💡 المظهر الفاتح</button>
+            <div class="btn-container">
                 <button id="lang-btn" class="btn-lang">English</button>
+                <button id="theme-btn" class="btn-theme">💡 المظهر الفاتح</button>
             </div>
         </header>
 
+        <!-- كرت الكورسات -->
         <div class="card">
             <h2 id="title-courses">📚 الكورسات الحالية</h2>
-            <ul>
-                <li id="c1"><strong>AWS Amazon S3:</strong> بناء واستضافة المواقع الثابتة وإدارتها عبر السحابة.</li>
-                <li id="c2"><strong>HTML5 Web Design:</strong> تصميم وهيكلة صفحات الويب وتنسيقها بشكل احترافي.</li>
-                <li id="c3"><strong>GitHub & DevOps:</strong> أتمتة رفع وتحديث المواقع تلقائياً (CI/CD).</li>
+            <ul id="list-courses">
+                <li><strong>AWS Amazon S3:</strong> بناء واستضافة المواقع الثابتة وإدارتها عبر السحابة.</li>
+                <li><strong>HTML5 Web Design:</strong> تصميم وهيكلة صفحات الويب وتنسيقها بشكل احترافي.</li>
+                <li><strong>GitHub & DevOps:</strong> أتمتة رفع وتحديث المواقع تلقائياً (CI/CD).</li>
             </ul>
         </div>
 
+        <!-- كرت المهارات -->
         <div class="card">
             <h2 id="title-skills">⚡ مهاراتي السحابية</h2>
-            <ul>
-                <li id="s1">إدارة وتخزين الملفات سحابياً عبر خدمات أمازون.</li>
-                <li id="s2">تطوير واجهات المستخدم الثابتة (Frontend Development).</li>
-                <li id="s3">إدارة المستودعات البرمجية عبر Git & GitHub.</li>
+            <ul id="list-skills">
+                <li>إدارة وتخزين الملفات سحابياً عبر خدمات أمازون.</li>
+                <li>تطوير واجهات المستخدم الثابتة (Frontend Development).</li>
+                <li>إدارة المستودعات البرمجية عبر Git & GitHub.</li>
             </ul>
         </div>
 
+        <!-- كرت الأهداف -->
         <div class="card">
             <h2 id="title-goals">🎯 الأهداف المستقبلية</h2>
-            <ul>
-                <li id="g1">تطوير تطبيقات سحابية كاملة وديناميكية (Full-Stack Cloud Applications).</li>
-                <li id="g2">الحصول على شهادات AWS المعتمدة عالمياً.</li>
-                <li id="g3">المساهمة في بناء مشاريع رقمية تخدم المجتمع التقني العربي.</li>
+            <ul id="list-goals">
+                <li>تطوير تطبيقات سحابية كاملة وديناميكية (Full-Stack Cloud Applications).</li>
+                <li>الحصول على شهادات AWS المعتمدة عالمياً.</li>
+                <li>المساهمة في بناء مشاريع رقمية تخدم المجتمع التقني العربي.</li>
             </ul>
         </div>
 
+        <!-- كرت الاتصال -->
         <div class="card contact-form">
             <h2 id="title-contact">📧 تواصل معي | Contact Me</h2>
             <form id="contactForm">
-                <input type="text" id="form-name" placeholder="الاسم الكريم" required>
-                <input type="email" id="form-email" placeholder="البريد الإلكتروني" required>
-                <textarea rows="4" id="form-msg" placeholder="اكتب رسالتك هنا..." required></textarea>
-                <button type="submit" id="form-submit" class="btn-submit">إرسال الرسالة</button>
+                <input type="text" id="inp-name" placeholder="الاسم الكريم" required>
+                <input type="email" id="inp-email" placeholder="البريد الإلكتروني" required>
+                <textarea id="txt-msg" rows="4" placeholder="اكتب رسالتك هنا..." required></textarea>
+                <button type="submit" id="btn-submit" class="btn-submit">إرسال الرسالة</button>
             </form>
         </div>
 
@@ -139,48 +169,41 @@
         const translations = {
             ar: {
                 title: "كوثر | مطورة سحابية واعدة",
-                mainTitle: "مرحباً، أنا كوثر | مطورة سحابية (Cloud Developer)",
-                subTitle: "مرحباً بكم في رحلتي لتعلم وتطوير مهاراتي في الحوسبة السحابية وبرمجة الويب.",
+                headerTitle: "مرحباً، أنا كوثر | مطورة سحابية (Cloud Developer)",
+                headerSub: "مرحباً بكم في رحلتي لتعلم وتطوير مهاراتي في الحوسبة السحابية وبرمجة الويب.",
                 coursesTitle: "📚 الكورسات الحالية",
-                c1: "<strong>AWS Amazon S3:</strong> بناء واستضافة المواقع الثابتة وإدارتها عبر السحابة.",
-                c2: "<strong>HTML5 Web Design:</strong> تصميم وهيكلة صفحات الويب وتنسيقها بشكل احترافي.",
-                c3: "<strong>GitHub & DevOps:</strong> أتمتة رفع وتحديث المواقع تلقائياً (CI/CD).",
+                course1: "<strong>AWS Amazon S3:</strong> بناء واستضافة المواقع الثابتة وإدارتها عبر السحابة.",
+                course2: "<strong>HTML5 Web Design:</strong> تصميم وهيكلة صفحات الويب وتنسيقها بشكل احترافي.",
+                course3: "<strong>GitHub & DevOps:</strong> أتمتة رفع وتحديث المواقع تلقائياً (CI/CD).",
                 skillsTitle: "⚡ مهاراتي السحابية",
-                s1: "إدارة وتخزين الملفات سحابياً عبر خدمات أمازون.",
-                s2: "تطوير واجهات المستخدم الثابتة (Frontend Development).",
-                s3: "إدارة المستودعات البرمجية عبر Git & GitHub.",
+                skill1: "إدارة وتخزين الملفات سحابياً عبر خدمات أمازون.",
+                skill2: "تطوير واجهات المستخدم الثابتة (Frontend Development).",
+                skill3: "إدارة المستودعات البرمجية عبر Git & GitHub.",
                 goalsTitle: "🎯 الأهداف المستقبلية",
-                g1: "تطوير تطبيقات سحابية كاملة وديناميكية (Full-Stack Cloud Applications).",
-                g2: "الحصول على شهادات AWS المعتمدة عالمياً.",
-                g3: "المساهمة في بناء مشاريع رقمية تخدم المجتمع التقني العربي.",
-                contactTitle: "📧 تواصل معي",
+                goal1: "تطوير تطبيقات سحابية كاملة وديناميكية (Full-Stack Cloud Applications).",
+                goal2: "الحصول على شهادات AWS المعتمدة عالمياً.",
+                goal3: "المساهمة في بناء مشاريع رقمية تخدم المجتمع التقني العربي.",
+                contactTitle: "📧 تواصل معي | Contact Me",
                 namePh: "الاسم الكريم",
                 emailPh: "البريد الإلكتروني",
                 msgPh: "اكتب رسالتك هنا...",
                 submitBtn: "إرسال الرسالة",
                 footerText: "تابع رحلتي البرمجية على المنصات التالية:",
-                alertMsg: "شكراً لك! تم استلام رسالتك بنجاح."
+                alertMsg: "شكراً لك! تم استلام رسالتك بنجاح، وسأقوم بالرد عليك قريباً."
             },
             en: {
-                title: "Kawtar | Cloud Developer Portfolio",
-                mainTitle: "Hello, I am Kawtar | Cloud Developer",
-                subTitle: "Welcome to my journey of learning Cloud Computing and Web Development.",
+                title: "Kawtar | Aspiring Cloud Developer",
+                headerTitle: "Hello, I am Kawtar | Cloud Developer",
+                headerSub: "Welcome to my journey of learning and developing my skills in Cloud Computing and Web Development.",
                 coursesTitle: "📚 Current Courses",
-                c1: "<strong>AWS Amazon S3:</strong> Building, hosting, and managing static websites on the cloud.",
-                c2: "<strong>HTML5 Web Design:</strong> Designing and structuring responsive web pages professionally.",
-                c3: "<strong>GitHub & DevOps:</strong> Automating website deployments seamlessly (CI/CD).",
+                course1: "<strong>AWS Amazon S3:</strong> Building, hosting static websites and managing them via Cloud.",
+                course2: "<strong>HTML5 Web Design:</strong> Designing, structuring web pages and styling them professionally.",
+                course3: "<strong>GitHub & DevOps:</strong> Automating website uploading and updating (CI/CD).",
                 skillsTitle: "⚡ My Cloud Skills",
-                s1: "Cloud storage and file management via AWS services.",
-                s2: "Frontend development for static web applications.",
-                s3: "Code repository management via Git and GitHub.",
+                skill1: "Cloud file management and storage via AWS services.",
+                skill2: "Frontend UI Web Development.",
+                skill3: "Code repository management via Git and GitHub.",
                 goalsTitle: "🎯 Future Goals",
-                g1: "Developing full-stack cloud-native web applications.",
-                g2: "Earning world-recognized AWS professional certifications.",
-                g3: "Contributing to digital projects that empower the tech community.",
-                contactTitle: "📧 Contact Me",
-                namePh: "Your Name",
-                emailPh: "Your Email",
-                msgPh: "Type your message here...",
-                submitBtn: "Send Message",
-                footerText: "Follow my coding journey on these platforms:",
+                goal1: "Developing full-stack cloud-native web applications.",
+
 
