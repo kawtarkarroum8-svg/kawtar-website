@@ -1,0 +1,68 @@
+            <h1>Hello, I am Kawtar | Cloud Developer</h1>
+            <p>Welcome to my journey of learning and developing my cloud skills.</p>
+            <button id="theme-btn">🌙 المظهر الداكن</button>
+        </header>
+
+        <div class="main-grid">
+
+            <!-- 1. مربع الكورسات الحالية -->
+            <div class="card">
+                <h2>📚 الكورسات الحالية | Current Courses</h2>
+                <ul>
+                    <li><strong>الحوسبة السحابية (Cloud Computing):</strong> دراسة هندسة السحاب وإدارة الخدمات العالمية.</li>
+                    <li><strong>تطوير واجهات الويب (Frontend Development):</strong> تعلم لغات HTML5, CSS3 وأساسيات JavaScript التفاعلية.</li>
+                </ul>
+            </div>
+
+            <!-- 2. مربع المهارات التي أتقنتها بالفعل -->
+            <div class="card">
+                <h2>⚡ مهاراتي التقنية | My Cloud Skills</h2>
+                <ul>
+                    <li>
+                        <img class="icon" src="https://icons8.com" alt="AWS">
+                        <strong>Amazon S3:</strong> رفع المواقع وإدارة الاستضافة السحابية الآمنة.
+                    </li>
+                    <li>
+                        <img class="icon" src="https://icons8.com" alt="HTML5">
+                        <strong>Web Design:</strong> بناء وتصميم صفحات ويب مرنة وتعمل على الهواتف الذكية.
+                    </li>
+                    <li>
+                        <img class="icon" src="https://icons8.com" alt="GitHub">
+                        <strong>GitHub & DevOps:</strong> حفظ الأكواد وبناء نظام الأتمتة والتحديث التلقائي للمواقع (CI/CD).
+                    </li>
+                    <li>
+                        <img class="icon" src="https://icons8.com" alt="Link">
+                        <strong>Link Management:</strong> احتراف اختصار وإدارة الروابط الرقمية عبر Bitly.
+                    </li>
+                </ul>
+            </div>
+
+            <!-- 3. مربع الأهداف المستقبلية -->
+            <div class="card full-width">
+                <h2>🚀 الأهداف المستقبلية | Future Goals</h2>
+                <ul>
+                    <li>أسعى لإتقان بناء التطبيقات الديناميكية الكاملة، والتعمق أكثر في خدمات AWS المتقدمة، وبناء مشاريع سحابية ضخمة تخدم المجتمع الرقمي.</li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        const themeBtn = document.getElementById('theme-btn');
+        const body = document.body;
+
+        themeBtn.addEventListener('click', () => {
+            body.classList.toggle('light-theme');
+            if (body.classList.contains('light-theme')) {
+                themeBtn.innerText = "☀️ المظهر المضيء";
+            } else {
+                themeBtn.innerText = "🌙 المظهر الداكن";
+            }
+        });
+    </script>
+
+</body>
+</html>
+
+
