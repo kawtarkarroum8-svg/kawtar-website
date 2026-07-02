@@ -12,7 +12,7 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v3
 
-    # تسجيل الدخول التلقائي لـ AWS باستخدام مفاتيحك السحرية
+    # تسجيل الدخول التلقائي لـ AWS
     - name: Configure AWS Credentials
       uses: aws-actions/configure-aws-credentials@v2
       with:
@@ -25,5 +25,3 @@ jobs:
       run: |
         aws s3 sync . s3://kawtar-cloud-project-2026 --delete
 
-
-2 Tem 2026 Per 01:25 tarihinde Kawtar Karroum <kawtarkarroum8@gmail.com> şunu yazdı:
