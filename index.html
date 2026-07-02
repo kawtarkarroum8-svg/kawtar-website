@@ -298,13 +298,9 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     }
 });
-</script>
-
-
-<!-- كود الأزرار والألوان الجديد (أمان تام)       -->
-<!-- ========================================== -->
 <script>
 document.addEventListener("DOMContentLoaded", function() {
+    
     // 1. تشغيل زر المظهر (داكن / فاتح)
     const themeBtn = document.getElementById("theme-btn");
     if (themeBtn) {
@@ -318,9 +314,10 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     }
 
-    // 2. تشغيل زر اللغة (إخفاء وإظهار الكروت المحددة)
+    // 2. تشغيل زر اللغة (إخفاء وإظهار الكروت الحالية)
     const langBtn = document.getElementById("lang-btn");
     let currentLang = "ar";
+    
     if (langBtn) {
         langBtn.addEventListener("click", function() {
             const coursesAr = document.getElementById("courses-title-ar");
@@ -333,24 +330,25 @@ document.addEventListener("DOMContentLoaded", function() {
             if (currentLang === "ar") {
                 currentLang = "en";
                 langBtn.textContent = "العربية";
-                document.documentElement.dir = "ltr";
-                if (coursesAr) coursesAr.setAttribute("style", "display: none !important;");
-                if (coursesEn) coursesEn.setAttr
-                if (coursesEn) coursesEn.setAttribute("style", "display: block !important;");
-                if (skillsTitleAr) skillsTitleAr.setAttribute("style", "display: none !important;");
-                if (skillsTitleEn) skillsTitleEn.setAttribute("style", "display: block !important;");
-                if (skillsListAr) skillsListAr.setAttribute("style", "display: none !important;");
-                if (skillsListEn) skillsListEn.setAttribute("style", "display: block !important;");
+                document.documentElement.dir = "ltr"; // قلب اتجاه الموقع لليسار
+                
+                if (coursesAr) coursesAr.style.display = "none";
+                if (coursesEn) coursesEn.style.display = "block";
+                if (skillsTitleAr) skillsTitleAr.style.display = "none";
+                if (skillsTitleEn) skillsTitleEn.style.display = "block";
+                if (skillsListAr) skillsListAr.style.display = "none";
+                if (skillsListEn) skillsListEn.style.display = "block";
             } else {
                 currentLang = "ar";
                 langBtn.textContent = "English";
-                document.documentElement.dir = "rtl";
-                if (coursesAr) coursesAr.setAttribute("style", "display: block !important;");
-                if (coursesEn) coursesEn.setAttribute("style", "display: none !important;");
-                if (skillsTitleAr) skillsTitleAr.setAttribute("style", "display: block !important;");
-                if (skillsTitleEn) skillsTitleEn.setAttribute("style", "display: none !important;");
-                if (skillsListAr) skillsListAr.setAttribute("style", "display: block !important;");
-                if (skillsListEn) skillsListEn.setAttribute("style", "display: none !important;");
+                document.documentElement.dir = "rtl"; // إعادة اتجاه الموقع لليمين
+                
+                if (coursesAr) coursesAr.style.display = "block";
+                if (coursesEn) coursesEn.style.display = "none";
+                if (skillsTitleAr) skillsTitleAr.style.display = "block";
+                if (skillsTitleEn) skillsTitleEn.style.display = "none";
+                if (skillsListAr) skillsListAr.style.display = "block";
+                if (skillsListEn) skillsListEn.style.display = "none";
             }
         });
     }
@@ -367,3 +365,4 @@ body.dark-theme p, body.dark-theme h1, body.dark-theme h2, body.dark-theme li, b
     color: #ffffff !important;
 }
 </style>
+
