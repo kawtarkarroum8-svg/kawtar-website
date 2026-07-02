@@ -1,7 +1,7 @@
             <h1>Hello, I am Kawtar | Cloud Developer</h1>
             <p>Welcome to my journey of learning and developing my cloud skills.</p>
             <button id="theme-btn">🌙 المظهر الداكن</button>
-        </header>
+        </header> 
 
         <div class="main-grid">
 
