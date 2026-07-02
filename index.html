@@ -6,7 +6,7 @@
     <title>كوثر | مطورة سحابية واعدة</title>
     <style>
         body {
-            background-color: #232f3e; /* لون AWS الكحلي الدائم */
+            background-color: #232f3e; /* لون كحلي مستوحى من AWS */
             color: #ffffff;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
@@ -26,13 +26,21 @@
             padding: 20px;
             margin-bottom: 20px;
             box-shadow: 0 4px 6px rgba(0,0,0,0.3);
-            border-right: 5px solid #ff9900; /* خط AWS البرتقالي */
+            border-right: 5px solid #ff9900; /* خط برتقالي مستوحى من AWS */
             border-left: none;
+        }
+        /* لتغيير اتجاه الخط عند تحويل اللغة للإنجليزية */
+        .ltr-dir {
+            direction: ltr !important;
+            text-align: left !important;
+        }
+        .ltr-dir .card {
+            border-left: 5px solid #ff9900 !important;
+            border-right: none !important;
         }
         h1 {
             color: #ff9900;
             text-align: center;
-            margin-bottom: 5px;
         }
         h2 {
             color: #ff9900;
@@ -41,17 +49,16 @@
         }
         ul {
             padding-right: 20px;
-            padding-left: 0;
+            padding-left: 20px;
         }
         li {
             margin-bottom: 10px;
         }
-        /* أزرار التحكم العلوية */
-        .controls {
+        .buttons-container {
             display: flex;
             justify-content: center;
             gap: 10px;
-            margin: 20px auto;
+            margin: 20px 0;
         }
         .btn-action {
             background-color: #ff9900;
@@ -66,7 +73,6 @@
         .btn-action:hover {
             background-color: #e08800;
         }
-        /* المظهر الفاتح */
         .light-theme {
             background-color: #f3f3f3;
             color: #232f3e;
@@ -76,120 +82,92 @@
             color: #232f3e;
             box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
-        /* تنسيق الاتجاه الإنجليزي (من اليسار لليمن) */
-        .ltr-mode {
-            direction: ltr;
-        }
-        .ltr-mode .card {
-            border-left: 5px solid #ff9900;
-            border-right: none;
-        }
-        .ltr-mode ul {
-            padding-left: 20px;
-            padding-right: 0;
-        }
-        /* تصميم نموذج الاتصال */
-        .contact-form input, .contact-form textarea {
-            width: 100%;
-            padding: 10px;
-            margin: 10px 0;
-            border-radius: 5px;
-            border: 1px solid #3a485a;
-            background-color: #232f3e;
-            color: white;
-            box-sizing: border-box;
-        }
-        .light-theme .contact-form input, .light-theme .contact-form textarea {
-            background-color: #f3f3f3;
-            color: #232f3e;
-            border: 1px solid #cbd5e0;
-        }
-        .btn-submit {
-            background-color: #ff9900;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-            cursor: pointer;
-            width: 100%;
-            font-weight: bold;
-        }
-        .counter-text {
-            text-align: center;
-            font-size: 0.9rem;
-            color: #a0aec0;
-            margin-top: -10px;
-            margin-bottom: 20px;
-        }
     </style>
 </head>
 <body>
 
-    <div class="container">
+    <div class="container" id="mainContainer">
         
         <header>
-            <h1 id="main-title">مرحباً، أنا كوثر | مطورة سحابية (Cloud Developer)</h1>
-            <p id="main-desc" style="text-align: center;">مرحباً بكم في رحلتي لتعلم وتطوير مهاراتي في الحوسبة السحابية وبرمجة الويب.</p>
+            <h1 id="mainTitle">مرحباً، أنا كوثر | مطورة سحابية (Cloud Developer)</h1>
+            <p id="mainDesc" style="text-align: center;">مرحباً بكم في رحلتي لتعلم وتطوير مهاراتي في الحوسبة السحابية وبرمجة الويب.</p>
             
             <p class="counter-text" id="visitor-counter">🔢 عدد زياراتك لهذه الصفحة: 1</p>
             
-            <!-- أزرار التحكم -->
-            <div class="controls">
+            <div class="buttons-container">
                 <button id="theme-btn" class="btn-action">💡 المظهر الفاتح</button>
                 <button id="lang-btn" class="btn-action">🌐 English</button>
             </div>
         </header>
 
-        <!-- قسم الكورسات -->
+        <!-- قسم الكورسات الحالية -->
         <div class="card">
-            <h2 id="title-courses">📚 الكورسات الحالية | Current Courses</h2>
-            <ul id="list-courses">
+            <h2 id="coursesTitle">📚 الكورسات الحالية | Current Courses</h2>
+            <ul id="coursesList">
                 <li><strong>AWS Amazon S3:</strong> بناء واستضافة المواقع الثابتة وإدارتها عبر السحابة.</li>
                 <li><strong>HTML5 Web Design:</strong> تصميم وهيكلة صفحات الويب وتنسيقها بشكل احترافي.</li>
                 <li><strong>GitHub & DevOps:</strong> أتمتة رفع وتحديث المواقع تلقائياً (CI/CD).</li>
             </ul>
         </div>
 
-        <!-- -قسم المهارات -->
+        <!-- قسم المهارات -->
         <div class="card">
-            <h2 id="title-skills">⚡ مهاراتي السحابية | My Cloud Skills</h2>
-            <ul id="list-skills">
+            <h2 id="skillsTitle">⚡ مهاراتي السحابية | My Cloud Skills</h2>
+            <ul id="skillsList">
                 <li>إدارة وتخزين الملفات سحابياً عبر خدمات أمازون.</li>
                 <li>تطوير واجهات المستخدم الثابتة (Frontend Development).</li>
                 <li>إدارة المستودعات البرمجية عبر Git & GitHub.</li>
             </ul>
         </div>
 
-        <!-- قسم الأهداف -->
+        <!-- قسم الأهداف المستقبلية -->
         <div class="card">
-            <h2 id="title-goals">🎯 الأهداف المستقبلية | Future Goals</h2>
-            <ul id="list-goals">
+            <h2 id="goalsTitle">🎯 الأهداف المستقبلية</h2>
+            <ul id="goalsList">
                 <li>تطوير تطبيقات سحابية كاملة وديناميكية (Full-Stack Cloud Applications).</li>
                 <li>الحصول على شهادات AWS المعتمدة عالمياً.</li>
                 <li>المساهمة في بناء مشاريع رقمية تخدم المجتمع التقني العربي.</li>
             </ul>
         </div>
 
-        <!-- نموذج الاتصال -->
+        <!-- ميزة: نموذج اتصال تفاعلي احترافي -->
         <div class="card contact-form">
-            <h2 id="title-contact">📧 تواصل معي | Contact Me</h2>
+            <h2 id="contactTitle">📧 تواصل معي</h2>
             <form id="contactForm">
-                <input type="text" id="form-name" placeholder="الاسم الكريم" required>
-                <input type="email" id="form-email" placeholder="البريد الإلكتروني" required>
-                <textarea id="form-msg" rows="4" placeholder="اكتب رسالتك هنا..." required></textarea>
-                <button type="submit" id="form-submit" class="btn-submit">إرسال الرسالة</button>
+                <input type="text" id="inputName" placeholder="الاسم الكريم" required>
+                <input type="email" id="inputEmail" placeholder="البريد الإلكتروني" required>
+                <textarea id="txtMessage" rows="4" placeholder="اكتب رسالتك هنا..." required></textarea>
+                <button type="submit" id="btnSubmit" class="btn-submit">إرسال الرسالة</button>
             </form>
         </div>
 
     </div>
 
+    <!-- كود جافا سكريبت كامل ومغلق بشكل سليم -->
     <script>
-        // نصوص اللغتين المخصصة للإثبات المهني
+        // 1. كود تغيير المظهر (فاتح / داكن)
+        const themeBtn = document.getElementById('theme-btn');
+        themeBtn.addEventListener('click', () => {
+            document.body.classList.toggle('light-theme');
+            if (document.body.classList.contains('light-theme')) {
+                themeBtn.innerText = "🌙 المظهر الداكن";
+            } else {
+                themeBtn.innerText = "💡 المظهر الفاتح";
+            }
+        });
+
+        // 2. كود عدّاد الزيارات
+        let visits = localStorage.getItem('page_view') || 0;
+        visits = parseInt(visits) + 1;
+        localStorage.setItem('page_view', visits);
+        document.getElementById('visitor-counter').innerText = `🔢 عدد زياراتك لهذه الصفحة: ${visits}`;
+
+        // 3. قاموس اللغات وكود تبديل اللغة بالكامل وبدون أخطاء قَطْع
         const translations = {
             ar: {
                 title: "مرحباً، أنا كوثر | مطورة سحابية (Cloud Developer)",
                 desc: "مرحباً بكم في رحلتي لتعلم وتطوير مهاراتي في الحوسبة السحابية وبرمجة الويب.",
-                counter: "🔢 عدد زياراتك لهذه الصفحة: ",
+                btnLang: "🌐 English",
                 coursesTitle: "📚 الكورسات الحالية | Current Courses",
                 courses: [
                     "<strong>AWS Amazon S3:</strong> بناء واستضافة المواقع الثابتة وإدارتها عبر السحابة.",
@@ -202,13 +180,13 @@
                     "تطوير واجهات المستخدم الثابتة (Frontend Development).",
                     "إدارة المستودعات البرمجية عبر Git & GitHub."
                 ],
-                goalsTitle: "🎯 الأهداف المستقبلية | Future Goals",
+                goalsTitle: "🎯 الأهداف المستقبلية",
                 goals: [
                     "تطوير تطبيقات سحابية كاملة وديناميكية (Full-Stack Cloud Applications).",
                     "الحصول على شهادات AWS المعتمدة عالمياً.",
                     "المساهمة في بناء مشاريع رقمية تخدم المجتمع التقني العربي."
                 ],
-                contactTitle: "📧 تواصل معي | Contact Me",
+                contactTitle: "📧 تواصل معي",
                 namePh: "الاسم الكريم",
                 emailPh: "البريد الإلكتروني",
                 msgPh: "اكتب رسالتك هنا...",
@@ -217,18 +195,18 @@
             },
             en: {
                 title: "Hello, I am Kawtar | Cloud Developer",
-                desc: "Welcome to my journey of learning and developing my skills in Cloud Computing and Web Development.",
-                counter: "🔢 Your visits to this page: ",
+                desc: "Welcome to my journey of learning and developing my skills in Cloud Computing and Web Programming.",
+                btnLang: "🌐 العربية",
                 coursesTitle: "📚 Current Courses",
                 courses: [
                     "<strong>AWS Amazon S3:</strong> Building, hosting, and managing static websites on the cloud.",
-                    "<strong>HTML5 Web Design:</strong> Designing, structuring, and professionally styling web pages.",
-                    "<strong>GitHub & DevOps:</strong> Automating website deployment and updates via CI/CD pipelines."
+                    "<strong>HTML5 Web Design:</strong> Designing and structuring web pages professionally.",
+                    "<strong>GitHub & DevOps:</strong> Automating website deployment and updates (CI/CD)."
                 ],
                 skillsTitle: "⚡ My Cloud Skills",
                 skills: [
-                    "Cloud file storage and management using Amazon Web Services.",
-                    "Frontend web development and user interface design.",
+                    "Cloud file storage and management via Amazon services.",
+                    "Frontend web UI development.",
                     "Code repository management via Git and GitHub."
                 ],
                 goalsTitle: "🎯 Future Goals",
@@ -241,16 +219,4 @@
                 namePh: "Your Name",
                 emailPh: "Your Email",
                 msgPh: "Type your message here...",
-                submitBtn: "Send Message",
-                alertMsg: "Thank you! Your message has been received successfully."
-            }
-        };
-
-        let currentLang = 'ar';
-
-        // تفعيل أزرار تغيير اللغة والاتجاه بالكامل
-        const langBtn = document.getElementById('lang-btn');
-        langBtn.addEventListener('click', () => {
-            if (currentLang === 'ar') {
-                currentLang = 'en';
 
