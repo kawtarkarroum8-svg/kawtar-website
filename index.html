@@ -207,44 +207,61 @@
             </form>
         </div>
 
-    </div>
-
-
-        langBtn.addEventListener('click', () => {
-            if (currentLang === 'ar') {
-                currentLang = 'en';
-                langBtn.innerText = "العربية";
-                container.classList.add('ltr-mode');
-                document.getElementById('nameInput').placeholder = "Your Name";
-                document.getElementById('emailInput').placeholder = "Your Email";
-                document.getElementById('msgInput').placeholder = "Type your message here...";
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    
+    // 1. زر المظهر (داكن / فاتح)
+    const themeBtn = document.getElementById("theme-btn");
+    if (themeBtn) {
+        themeBtn.addEventListener("click", function() {
+            document.body.classList.toggle("dark-theme");
+            if (document.body.classList.contains("dark-theme")) {
+                themeBtn.textContent = "المظهر الداكن";
             } else {
-                currentLang = 'ar';
-                langBtn.innerText = "English";
-                container.classList.remove('ltr-mode');
-                document.getElementById('nameInput').placeholder = "الاسم الكريم";
-                document.getElementById('emailInput').placeholder = "البريد الإلكتروني";
-                document.getElementById('msgInput').placeholder = "اكتب رسالتك هنا...";
+                themeBtn.textContent = "المظهر الفاتح";
             }
         });
+    }
 
-        // 3. تشغيل نموذج الاتصال
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            if (currentLang === 'ar') {
-                alert('شكراً لك! تم استلام رسالتك بنجاح.');
+    // 2. زر اللغة المطور والمصحح بالكامل
+    const langBtn = document.getElementById("lang-btn");
+    let currentLang = "ar";
+
+    if (langBtn) {
+        langBtn.addEventListener("click", function() {
+            const arElements = document.querySelectorAll(".ar-text");
+            const enElements = document.querySelectorAll(".en-text");
+
+            if (currentLang === "ar") {
+                currentLang = "en";
+                langBtn.textContent = "العربية";
+                document.documentElement.setAttribute("dir", "ltr"); // قلب الاتجاه لليسار
+
+                arElements.forEach(el => el.style.setProperty("display", "none", "important"));
+                enElements.forEach(el => el.style.setProperty("display", "block", "important"));
             } else {
-                alert('Thank you! Your message has been received successfully.');
-            }
-            this.reset();
-        });
+                currentLang = "ar";
+                langBtn.textContent = "English";
+                document.documentElement.setAttribute("dir", "rtl"); // إعادة الاتجاه لليمين
 
-        // 4. تشغيل عدّاد الزيارات
-        let visits = localStorage.getItem('page_view_count');
-        if (visits) {
-            visits = parseInt(visits) + 1;
-        } else {
-            visits = 1;
-        }
-        localStorage.setItem('page_view_count', visits);
-<script> document.addEventListener("DOMContentLoaded", function() { // 1. زر المظهر (يعمل بنجاح) const themeBtn = document.getElementById("theme-btn"); if (themeBtn) { themeBtn.addEventListener("click", function() { document.body.classList.toggle("dark-theme"); if (document.body.classList.contains("dark-theme")) { themeBtn.textContent = "المظهر الداكن"; } else { themeBtn.textContent = "المظهر الفاتح"; } }); } // 2. زر اللغة الذكي (يتحكم في اتجاه الصفحة فقط) const langBtn = document.getElementById("lang-btn"); let currentLang = "ar"; if (langBtn) { langBtn.addEventListener("click", function() { if (currentLang === "ar") { currentLang = "en"; langBtn.textContent = "العربية"; document.documentElement.setAttr
+                arElements.forEach(el => el.style.setProperty("display", "block", "important"));
+                enElements.forEach(el => el.style.setProperty("display", "none", "important"));
+            }
+        });
+    }
+});
+</script>
+
+<style>
+/* كود الألوان الخارق للمظهر الداكن */
+body.dark-theme, body.dark-theme *, body.dark-theme div, body.dark-theme .card {
+    background-color: #1a1a1a !important;
+    color: #ffffff !important;
+}
+
+/* إخفاء الإنجليزي تلقائياً عند فتح الصفحة لأول مرة */
+.en-text {
+    display: none !important;
+}
+</style>
+
