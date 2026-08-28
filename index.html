@@ -6,11 +6,14 @@
     <title>Kawtar | Cloud & DevOps Engineer Portfolio</title>
     <style>
         :root {
-            --bg-color: #0f172a;
-            --card-bg: #1e293b;
-            --text-color: #f8fafc;
-            --accent-color: #38bdf8;
-            --secondary-text: #94a3b8;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-color: #0f172a;
+            --accent-color: #0284c7;
+            --secondary-text: #475569;
+            --border-color: #e2e8f0;
+            --tag-bg: #e0f2fe;
+            --tag-text: #0369a1;
         }
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -25,7 +28,7 @@
         }
         header {
             text-align: center;
-            padding: 4rem 1rem 2rem;
+            padding: 3rem 1rem 1.5rem;
         }
         h1 {
             font-size: 2.5rem;
@@ -36,6 +39,7 @@
             font-size: 1.2rem;
             color: var(--secondary-text);
             margin-top: 0;
+            font-weight: 500;
         }
         .container {
             width: 90%;
@@ -46,13 +50,15 @@
             background-color: var(--card-bg);
             padding: 2rem;
             border-radius: 12px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+            border: 1px solid var(--border-color);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
             margin-bottom: 2rem;
         }
         h2 {
             border-bottom: 2px solid var(--accent-color);
             padding-bottom: 0.5rem;
             color: var(--accent-color);
+            margin-top: 0;
         }
         .skills {
             display: flex;
@@ -61,12 +67,34 @@
             margin-top: 1rem;
         }
         .skill-tag {
-            background-color: #334155;
-            color: #38bdf8;
+            background-color: var(--tag-bg);
+            color: var(--tag-text);
             padding: 8px 16px;
             border-radius: 20px;
             font-size: 0.9rem;
+            font-weight: 600;
+        }
+        .cert-link {
+            display: inline-block;
+            margin-top: 1rem;
+            color: var(--accent-color);
+            text-decoration: none;
             font-weight: bold;
+            border: 2px solid var(--accent-color);
+            padding: 10px 20px;
+            border-radius: 8px;
+            transition: 0.3s;
+        }
+        .cert-link:hover {
+            background-color: var(--accent-color);
+            color: #ffffff;
+        }
+        img.responsive-img {
+            width: 100%;
+            max-width: 100%;
+            border-radius: 8px;
+            margin-top: 1rem;
+            border: 1px solid var(--border-color);
         }
         footer {
             margin-top: auto;
@@ -93,19 +121,29 @@
         <div class="card">
             <h2>Technical Skills</h2>
             <div class="skills">
+                <span class="skill-tag">VS Code</span>
                 <span class="skill-tag">Amazon Web Services (AWS)</span>
                 <span class="skill-tag">GitHub Actions (CI/CD)</span>
                 <span class="skill-tag">Terraform (IaC)</span>
-                <span class="skill-tag">S3 & CloudFront</span>
+                <span class="skill-tag">AWS S3 & CloudFront</span>
                 <span class="skill-tag">IAM & Security</span>
-                <span class="skill-tag">Docker</span>
+                <span class="skill-tag">Linux / Bash</span>
                 <span class="skill-tag">Git & Version Control</span>
             </div>
         </div>
 
         <div class="card">
-            <h2>Automated Deployment Pipeline</h2>
-            <p>This static website is automatically deployed to Amazon S3 through a custom <strong>GitHub Actions CI/CD Pipeline</strong> whenever changes are pushed to the main branch.</p>
+            <h2>AWS Architecture Diagram</h2>
+            <p>Visual pipeline breakdown showing code deployment from VS Code through GitHub Actions to AWS S3 & CloudFront:</p>
+            <img src="architecture.png" alt="AWS Architecture Diagram" class="responsive-img">
+        </div>
+
+        <div class="card">
+            <h2>AWS Education & Accomplishments</h2>
+            <p>Successfully completed official AWS Skill Builder training: <strong>AWS Cloud Practitioner Essentials</strong>.</p>
+            <a href="https://skillbuilder.aws/learn/94T2BEN85A/aws-cloud-practitioner-essentials/8D79F3AVR7" target="_blank" class="cert-link">Verify AWS Skill Builder Course 🔗</a>
+            <br>
+            <img src="certificate.png" alt="AWS Certificate of Completion" class="responsive-img">
         </div>
     </div>
 
